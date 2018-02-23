@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * 程序启动类
  * @author cheyantao
  */
-@MapperScan("net.wildwolf.tasklist.tasklist.domain")
+@MapperScan("net.wildwolf.tasklist.tasklist.dao")
 @SpringBootApplication
 public class TasklistApplication {
 	private static Logger logger= LoggerFactory.getLogger(TasklistApplication.class);
@@ -36,7 +36,8 @@ public class TasklistApplication {
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
+		sqlSessionFactoryBean.setMapperLocations(resolver.getResources
+				("classpath:/mapper/*.xml"));
 
 		return sqlSessionFactoryBean.getObject();
 	}
